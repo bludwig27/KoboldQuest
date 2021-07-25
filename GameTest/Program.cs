@@ -25,6 +25,8 @@ namespace KoboldQuest
 
         public static void Room1(List<string> items)
         {
+            //The starting room, in which the player chooses an item to take with them (or nothing).
+
             bool goal = false;
             string playerSelection;
 
@@ -87,6 +89,7 @@ namespace KoboldQuest
         }
         public static void Room2(List<string> items)
         {
+            //The crossroads room, where the player chooses to go left or right. These lead to different sets of rooms.
 
             string playerSelection;
 
@@ -175,6 +178,8 @@ namespace KoboldQuest
         }
         public static void Room3(List<string> items)
         {
+            //The sphinx room, where the player must answer a riddle to proceed.
+
             string riddleAnswer;
 
             Header("Sphinx Gate");
@@ -204,6 +209,8 @@ namespace KoboldQuest
         }
         public static void Room4(List<string> items)
         {
+            //The Library room, in which the player must use a cloak or enter the secret letter "b" to continue.
+
             string playerSelection;
 
             if (items.Contains("cloak"))
@@ -307,6 +314,8 @@ namespace KoboldQuest
 
         public static void Room5(List<string> items)
         {
+            //This is the forest, in which the player must enter a direction (e, w, s, n) in accordance with the acrostic found in the clues (or use a dagger).
+
             string playerSelection;
 
             if (items.Contains("dagger"))
@@ -468,6 +477,8 @@ namespace KoboldQuest
 
         public static void Room6(List<string> items)
         {
+            //The kitchen, in which the player must unscramble the letters to find the correct word or use a dagger to proceed.
+
             string playerSelection;
             string riddleAnswer;
 
@@ -624,6 +635,8 @@ namespace KoboldQuest
 
         public static void Room7(List<string> items)
         {
+            //The tower, in which an item must be used, unless the player has none. Different versions of the room exist for different items.
+
             string playerResponse;
 
             Header("The Tower");
@@ -757,6 +770,8 @@ namespace KoboldQuest
         }
         public static void Room8(List<string> items)
         {
+            //Having found the treasure, the player makes a final decision on whether to give it to Klingsor or keep it for themselves.
+
             string playerResponse; 
 
             Header("The Treasure");
@@ -887,6 +902,8 @@ namespace KoboldQuest
 
         public static void Start()
         {
+            //The intro screen, shown when the game begins. It offers the chance to see instructions before continuing to room 1.
+
             string userResponse;
             bool startDone = false;
 
@@ -929,6 +946,10 @@ namespace KoboldQuest
         }
         public static void End()
         {
+            //This is the ending screen, seen when the player dies, quits or finishes the game.
+            //It tells the player whether or not they have succeeded on the quest and offers the chance to play again.
+            //KNOWN BUG: Sometimes, the player must enter "n" repeatedly to quit the game instead of just once.
+
             string playAgain;
             bool done = false;
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -970,6 +991,8 @@ namespace KoboldQuest
         }
         public static void Play()
         {
+            //Resets and begins the game.
+
             List<string> items = new List<string>();
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -979,6 +1002,8 @@ namespace KoboldQuest
         }
         public static void Inventory(List<string> items)
         {
+            //Displays the player's inventory, if they have one. If not, it displays "You are not currently carrying anything."
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             if (items.Count == 0)
             {
@@ -1005,6 +1030,8 @@ namespace KoboldQuest
         }
         static void Header(string headerText)
         {
+            //Displays headers in cyan.
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
@@ -1014,6 +1041,8 @@ namespace KoboldQuest
         }
         static void RedFont(string redText)
         {
+            //A quick method to get red text in the middle of a line.
+
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write(redText);
             Console.ForegroundColor = ConsoleColor.White;
